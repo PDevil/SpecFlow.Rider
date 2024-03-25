@@ -24,7 +24,7 @@ namespace ReSharperPlugin.SpecflowRiderPlugin.Analytics
                                 Lifetime lifetime,
                                 OpensUri opensUri)
          {
-             solutionLoadTasksScheduler.EnqueueTask(new SolutionLoadTask("SpecFlow", SolutionLoadTaskKinds.AsLateAsPossible, () =>
+             solutionLoadTasksScheduler.EnqueueTask(new SolutionLoadTask(GetType(), "SpecFlow", SolutionLoadTaskKinds.AsLateAsPossible, () =>
                  {
                      var projects = ((SolutionElement)solution).GetAllProjects();
                      var isSpecFlowSolution = false;

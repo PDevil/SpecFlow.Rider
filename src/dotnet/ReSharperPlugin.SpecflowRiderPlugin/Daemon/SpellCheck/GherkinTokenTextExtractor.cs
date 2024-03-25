@@ -12,7 +12,7 @@ namespace ReSharperPlugin.SpecflowRiderPlugin.Daemon.SpellCheck;
 public class GherkinTokenTextExtractor : ElementTextExtractor<GherkinToken>
 {
     public GherkinTokenTextExtractor(
-        ReSpellerDataBuilder reReSpellerDataBuilder,
+        ISpellingAndGrammarDataBuilder reReSpellerDataBuilder,
         IRequiredSpellCheckingModesProvider requiredRequiredSpellCheckingModesProvider,
         GrammarAndSpellingMeasurements measurements
     ) : base(reReSpellerDataBuilder, requiredRequiredSpellCheckingModesProvider, measurements)
@@ -22,7 +22,7 @@ public class GherkinTokenTextExtractor : ElementTextExtractor<GherkinToken>
     public override bool Extract(GherkinToken node, ElementTextExtractorContext context)
     {
         context.Collector.EnrichWithReSpellerData(
-            ReSpellerDataBuilder, context.File, SpellCheckingMode.Orthography, CheckingContext.Comment,
+            SpellingAndGrammarDataBuilder, context.File, node, SpellCheckingMode.Orthography, CheckingContext.Comment,
             SparseTextToCheck.FromNode(node)
         );
         return true;
